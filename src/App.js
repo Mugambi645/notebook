@@ -1,8 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
+import Navbar from "./components/NavBar";
+
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import NavBar from './components/NavBar';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -24,6 +27,7 @@ const analytics = getAnalytics(app);
 function App() {
   return (
 <div>
+  <NavBar/>
   <h2>App</h2>
     </div>
   );
