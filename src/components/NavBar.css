@@ -1,8 +1,8 @@
 /*components/Navbar/Navbar.css */
 .navbar {
-    display: flex;
+    display: inline-flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     width: 99vw;
     height: 70px;
     background: rgba( 255, 255, 255, 0.15 );
@@ -17,4 +17,6 @@
     font-size: 20px;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
+    align-items: flex-start;
+    float: left;
 }

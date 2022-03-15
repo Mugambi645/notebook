@@ -1,7 +1,11 @@
 import logo from './logo.svg';
+import firebase from "firebase/compat/app";
+import "firebase/compat/database";
 import './App.css';
+import React, { useState, useEffect } from "react";
 import Navbar from "./components/NavBar";
-
+import NoteAdd from "./components/NoteAdd";
+import NoteBook from './components/NoteBook';
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
@@ -20,17 +24,49 @@ const firebaseConfig = {
   appId: "1:780846036583:web:3df8cf5546e50277c286c2",
   measurementId: "G-W5WLH4JKCJ"
 };
+firebase.initializeApp(firebaseConfig);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-function App() {
+const App = () => {
+  const [noteBookData, setNoteBookData] = useState([]);
+
+  const updateNotes = () => {
+    firebase
+      .database()
+      .ref("notebook")
+      .on("child_added", (snapshot) => {
+        let note = {
+          id: snapshot.key,
+          title: snapshot.val().title,
+          description: snapshot.val().description,
+        };
+        let notebook = noteBookData;
+        notebook.push(note);
+        setNoteBookData([...noteBookData]);
+      });
+
+    firebase
+      .database()
+      .ref("notebook")
+      .on("child_removed", (snapshot) => {
+        let notebook = noteBookData;
+        notebook = noteBookData.filter((note) => note.id !== snapshot.key);
+        setNoteBookData(notebook);
+      });
+  };
+
+  useEffect(() => {
+    updateNotes();
+  }, []);
+
   return (
-<div>
-  <NavBar/>
-  <h2>App</h2>
+    <div className="app">
+      <NavBar />
+      <div className="note-section">
+        <NoteAdd />
+        <NoteBook notebook={noteBookData} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
