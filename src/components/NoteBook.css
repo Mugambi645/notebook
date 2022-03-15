@@ -7,7 +7,7 @@
     padding: 20px;
   }
   .notebook .notebookInfo {
-    background: rgba(209, 97, 175, 0.25);
+    background: #386641;
     box-shadow: 0 8px 32px 0 rgba(135, 31, 100, 0.37);
     backdrop-filter: blur(2.5px);
     border-radius: 20px;
@@ -38,6 +38,7 @@
   
   .notebookInfo-title .remove {
     padding-right: 1rem;
+    color: #ff0000;
   }
   
   .notebook .notebookInfo .notebookInfo-title {
@@ -55,6 +56,7 @@
   
   .notebook .notebookInfo .notebookInfo-description {
     padding: 10px;
+    color: white;
   }
   
   .remove {

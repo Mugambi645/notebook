@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import firebase from "firebase/compat/app";
 import "firebase/compat/database";
 import "./NoteAdd.css";
-
+import TextField from '@material-ui/core/TextField';
 const NoteAdd = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -47,10 +47,12 @@ const NoteAdd = () => {
             onChange={(val) => handleDescriptionChange(val)}
           ></textarea>
         </div>
+        
         <div className="noteadd-button">
-          <button onClick={() => addNote()}>Add a Note</button>
+          <button onClick={() => addNote()}>Add Note</button>
         </div>
       </div>
+      
     </>
   );
 };

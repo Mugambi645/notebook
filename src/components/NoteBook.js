@@ -16,7 +16,7 @@ const NoteBook = (props) => {
             <React.Fragment key={index}>
               <div className="notebookInfo" key={note.id}>
                 <div className="notebookInfo-title">
-                  <h3>{note.title}</h3>
+                  <h3>Title: {note.title}</h3>
                   <div
                     className="remove"
                     onClick={() => deleteNotebook(note.id)}
@@ -25,7 +25,7 @@ const NoteBook = (props) => {
                   </div>
                 </div>
                 <div className="notebookInfo-description">
-                  <p>{note.description}</p>
+                  <p>Description: {note.description}</p>
                 </div>
               </div>
             </React.Fragment>
